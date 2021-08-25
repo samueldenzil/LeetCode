@@ -1,4 +1,26 @@
+// Improved version of the code
 class Solution {
+    public int findNumbers(int[] nums) {
+        int evenDigitCount = 0;
+        for (int element : nums) {
+            if (getDigit(element) % 2 == 0) {
+                evenDigitCount++;
+            }
+        }
+        return evenDigitCount;
+    }
+
+    public int getDigit(int num) {
+        return (int)(Math.log10(num) + 1);
+    }
+}
+
+/* You can even try this
+num = 1234;
+String numStr = num + "";
+System.out.println(numStr.length()); */
+
+/* class Solution {
     public int findNumbers(int[] nums) {
         int evenDigitCounter = 0;
         for (int element : nums) {
@@ -17,4 +39,5 @@ class Solution {
         }
         return count;
     }
-}
+} */
+
