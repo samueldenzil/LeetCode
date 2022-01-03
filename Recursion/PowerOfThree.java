@@ -7,8 +7,7 @@ class PowerOfThree {
         }
         if (n % 3 == 0 && n != 0) {
             return isPowerOfThree(n / 3);
-        }
-        else {
+        } else {
             return false;
         }
     }
