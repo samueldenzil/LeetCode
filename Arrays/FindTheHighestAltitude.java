@@ -1,4 +1,6 @@
-class Solution {
+package Arrays;
+
+class FindTheHighestAltitude {
     public int largestAltitude(int[] gain) {
 
         int initialAltitude = 0;

@@ -1,3 +1,5 @@
+package Recursion;
+
 // https://practice.geeksforgeeks.org/problems/geek-onacci-number/0/
 import java.util.Scanner;
 
@@ -32,6 +34,7 @@ public class GeekonacciNumber {
             System.out.println(geekonacci(n));
             t--;
         }
+        sc.close();
     }
 }
 

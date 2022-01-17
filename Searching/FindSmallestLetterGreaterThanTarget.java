@@ -1,7 +1,8 @@
+package Searching;
 // https://leetcode.com/problems/find-smallest-letter-greater-than-target/
 
 // exactly same approach for ceiling of a number
-class Solution {
+class FindSmallestLetterGreaterThanTarget {
     public char nextGreatestLetter(char[] letters, char target) {
         int start = 0;
         int end = letters.length - 1;

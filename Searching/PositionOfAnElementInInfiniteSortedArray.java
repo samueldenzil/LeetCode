@@ -1,3 +1,4 @@
+package Searching;
 // Amazon Interview Question
 // https://www.geeksforgeeks.org/find-position-element-sorted-array-infinite-numbers/
 

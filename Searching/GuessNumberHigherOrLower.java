@@ -1,3 +1,4 @@
+package Searching;
 // https://leetcode.com/problems/guess-number-higher-or-lower/
 
 public class GuessNumberHigherOrLower {

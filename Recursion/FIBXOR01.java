@@ -53,5 +53,6 @@ public class FIBXOR01 {
 			System.out.println(fibonacci(n % 3));
 			t--;
 		}
+		sc.close();
 	}
 }

@@ -1,6 +1,7 @@
 // https://www.geeksforgeeks.org/window-sliding-technique/
 // https://practice.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1/
 // OYO Rooms Interview Question
+package Arrays;
 
 public class MaxSumSubarrayOfSizeK {
 

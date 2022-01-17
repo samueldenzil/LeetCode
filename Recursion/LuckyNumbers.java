@@ -1,3 +1,5 @@
+package Recursion;
+
 // https://practice.geeksforgeeks.org/problems/lucky-numbers2911/1
 // Microsoft
 

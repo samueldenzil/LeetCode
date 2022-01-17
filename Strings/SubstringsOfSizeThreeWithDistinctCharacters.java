@@ -1,3 +1,4 @@
+package Strings;
 // https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/
 
 public class SubstringsOfSizeThreeWithDistinctCharacters {

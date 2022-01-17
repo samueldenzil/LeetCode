@@ -1,6 +1,7 @@
+package Arrays;
 
 // my approach
-/* class Solution {
+/* class RunningSumOf1DArray {
     public int[] runningSum(int[] nums) {
         int[] runningSum = new int[nums.length];
 
@@ -15,7 +16,7 @@
 } */
 
 // required approach
-class Solution {
+class RunningSumOf1DArray {
     public int[] runningSum(int[] nums) {
 
         for (int i = 1; i < nums.length; i++) {

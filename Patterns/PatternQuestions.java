@@ -1,3 +1,4 @@
+package Patterns;
 
 public class PatternQuestions {
 

@@ -1,3 +1,5 @@
+package Recursion;
+
 class ProgramToCheckIfAnArrayIsFortedOrNot {
     
     public static boolean isReversed(int[] arr, int n) {

@@ -1,3 +1,4 @@
+package Strings;
 // https://leetcode.com/problems/goal-parser-interpretation
 
 class GoalParserInterpretation {

@@ -1,3 +1,4 @@
+package Sorting;
 // Microsoft Interview Question
 // https://leetcode.com/problems/find-the-duplicate-number/
 

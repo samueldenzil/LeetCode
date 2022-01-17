@@ -1,4 +1,6 @@
-class Solution {
+package Arrays;
+
+class CreateTargetArrayInTheGivenOrder {
     public int[] createTargetArray(int[] nums, int[] index) {
         int[] target = new int[nums.length];
 

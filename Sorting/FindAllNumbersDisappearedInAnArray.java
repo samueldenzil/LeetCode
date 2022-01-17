@@ -1,3 +1,4 @@
+package Sorting;
 // Google Interview Question
 // https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
 
@@ -22,7 +23,7 @@ class FindAllNumbersDisappearedInAnArray {
         List<Integer> list = new ArrayList<>();
         
         for (i = 0; i < nums.length; i++) {
-            int correct = nums[i] - 1;
+//            int correct = nums[i] - 1;
             
             if (nums[i] != i + 1) {
                 list.add(i + 1);

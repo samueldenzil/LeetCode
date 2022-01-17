@@ -1,4 +1,6 @@
-class Solution {
+package Arrays;
+
+class TransposeMatrix {
     public int[][] transpose(int[][] matrix) {
         int m = matrix.length;
         int n = matrix[0].length;

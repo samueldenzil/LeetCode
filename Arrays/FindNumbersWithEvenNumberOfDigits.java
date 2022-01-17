@@ -1,5 +1,7 @@
+package Arrays;
+
 // Improved version of the code
-class Solution {
+class FindNumbersWithEvenNumberOfDigits {
     public int findNumbers(int[] nums) {
         int evenDigitCount = 0;
         for (int element : nums) {

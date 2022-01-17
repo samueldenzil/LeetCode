@@ -1,7 +1,8 @@
+package Searching;
 // Google, Facebook Interview Question
 // https://leetcode.com/problems/peak-index-in-a-mountain-array/
 
-class Solution {
+class PeakIndexInAMountainArray {
     public int peakIndexInMountainArray(int[] arr) {
         int start = 0;
         int end = arr.length;

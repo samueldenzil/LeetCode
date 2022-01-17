@@ -1,3 +1,5 @@
+package Recursion;
+
 // https://www.geeksforgeeks.org/sum-triangle-from-array/
 
 import java.util.Arrays;

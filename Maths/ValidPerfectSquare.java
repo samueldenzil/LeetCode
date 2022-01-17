@@ -1,3 +1,5 @@
+package Maths;
+
 // https://leetcode.com/problems/valid-perfect-square/
 
 class ValidPerfectSquare {

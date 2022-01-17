@@ -1,4 +1,6 @@
-class Solution {
+package Arrays;
+
+class FlippingAnImage {
     public int[][] flipAndInvertImage(int[][] image) {
 
         for (int i = 0; i < image.length; i++) {

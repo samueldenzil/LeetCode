@@ -1,10 +1,11 @@
+package Searching;
 // Google, Facebook Interview Question
 // https://leetcode.com/problems/find-peak-element/
 
 // This question is word to word same as "Peak Index in a Mountain Array"
 // https://leetcode.com/problems/peak-index-in-a-mountain-array/
 
-class Solution {
+class FindPeakElement {
     public int findPeakElement(int[] nums) {
         int start = 0;
         int end = nums.length - 1;

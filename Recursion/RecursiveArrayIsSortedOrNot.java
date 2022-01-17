@@ -1,3 +1,5 @@
+package Recursion;
+
 // https://www.geeksforgeeks.org/program-check-array-sorted-not-iterative-recursive/
 
 public class RecursiveArrayIsSortedOrNot {
