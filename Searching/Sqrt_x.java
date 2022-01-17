@@ -1,3 +1,4 @@
+package Searching;
 // https://leetcode.com/problems/sqrtx/
 
 public class Sqrt_x {

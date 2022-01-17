@@ -1,4 +1,5 @@
-package RecursionByStriver;
+package Recursion;
+
 
 public class SumOfNFunctional {
 

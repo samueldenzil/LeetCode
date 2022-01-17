@@ -1,3 +1,4 @@
+package Searching;
 // https://practice.geeksforgeeks.org/problems/find-transition-point-1587115620/1/
 // Amazon Interview Question
 

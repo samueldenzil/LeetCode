@@ -1,3 +1,5 @@
+package Recursion;
+
 // https://www.geeksforgeeks.org/product-2-numbers-using-recursion/
 import java.util.Scanner;
 
@@ -24,5 +26,6 @@ public class RecursionProductOf2Numbers {
 
         int ans = x > y ? product(y, x) : product(x, y);
         System.out.println(ans);
+        sc.close();
     }
 }

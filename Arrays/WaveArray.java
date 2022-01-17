@@ -1,3 +1,4 @@
+package Arrays;
 // https://practice.geeksforgeeks.org/problems/wave-array-1587115621/1
 
 public class WaveArray {
@@ -5,6 +6,12 @@ public class WaveArray {
 	// arr: input array
 	// n: size of the array
 	//Function to sort the array into a wave-like array.
+	
+	public static void main(String[] args) {
+		int[] arr = {1, 2, 3, 4, 5};
+		convertToWave(arr, arr.length);
+	}
+	
 	public static void convertToWave(int arr[], int n) {
 
 		// Your code here

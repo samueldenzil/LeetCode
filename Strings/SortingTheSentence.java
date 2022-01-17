@@ -1,3 +1,4 @@
+package Strings;
 // https://leetcode.com/problems/sorting-the-sentence/
 
 class SortingTheSentence {

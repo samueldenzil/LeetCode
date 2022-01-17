@@ -1,3 +1,4 @@
+package Searching;
 // my approach to solve this problem
 public class CeilingOfANumber {
 

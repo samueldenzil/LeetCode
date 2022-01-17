@@ -1,3 +1,4 @@
+package Searching;
 // https://practice.geeksforgeeks.org/problems/count-the-zeros2550/1/
 // Amazon Yahoo
 

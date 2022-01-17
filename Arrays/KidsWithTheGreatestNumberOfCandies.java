@@ -1,4 +1,9 @@
-class Solution {
+package Arrays;
+
+import java.util.List;
+import java.util.ArrayList;
+
+class KidsWithTheGreatestNumberOfCandies {
     public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
         List<Boolean> ans = new ArrayList<>();
         int max = candies[0];

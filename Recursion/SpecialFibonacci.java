@@ -1,3 +1,5 @@
+package Recursion;
+
 import java.util.Scanner;
 
 public class SpecialFibonacci {
@@ -51,6 +53,7 @@ public class SpecialFibonacci {
 			System.out.println(fibonacci(n % 3));
 			t--;
 		}
+		sc.close();
 	}
 }
 

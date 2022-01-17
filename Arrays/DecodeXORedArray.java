@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/decode-xored-array/
+package Arrays;
 
 class DecodeXORedArray {
     public int[] decode(int[] encoded, int first) {

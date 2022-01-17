@@ -1,6 +1,7 @@
+package Searching;
 // https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
 
-class Solution {
+class FindMinimumInRotatedSortedArray {
     public int findMin(int[] nums) {
         int firstElement = (findPivotIndex(nums) + 1) % nums.length;
 

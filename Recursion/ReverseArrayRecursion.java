@@ -1,4 +1,4 @@
-package RecursionByStriver;
+package Recursion;
 
 public class ReverseArrayRecursion {
 

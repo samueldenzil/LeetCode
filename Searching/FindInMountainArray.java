@@ -1,3 +1,4 @@
+package Searching;
 /**
  * // This is MountainArray's API interface.
  * // You should not implement it, or speculate about its implementation
@@ -8,8 +9,8 @@
  */
 // https://leetcode.com/problems/find-in-mountain-array/
 
-class Solution {
-    public int findInMountainArray(int target, MountainArray mountainArr) {
+class FindInMountainArray {
+	 /* public int findInMountainArray(int target, MountainArray mountainArr) {
         int peakIndex = findPeakIndex(mountainArr);
 
         // searching the target element in the ascending part
@@ -76,5 +77,5 @@ class Solution {
             }
         }
         return -1;
-    }
+    } */
 }

@@ -1,4 +1,6 @@
-class Solution {
+package Arrays;
+
+class HowManyNumbersAreSmallerThantheCurrentNumber {
     public int[] smallerNumbersThanCurrent(int[] nums) {
         int[] ans = new int[nums.length];
         int count;
