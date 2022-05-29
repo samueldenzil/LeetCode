@@ -3,10 +3,16 @@ package Sorting;
 // https://leetcode.com/problems/missing-number
 
 class MissingNumber {
-    public int missingNumber(int[] nums) {
+
+    public static void main(String[] args) {
+        int[] nums = {3, 0, 1};
+        System.out.println(missingNumber(nums));
+    }
+
+    public static int missingNumber(int[] nums) {
         int i = 0;
         int n = nums.length;
-        
+
         while (i < n) {
             if (nums[i] != i && nums[i] != n) {
                 swap(nums, nums[i], i);
@@ -14,7 +20,7 @@ class MissingNumber {
                 i++;
             }
         }
-        
+
         for (i = 0; i < n; i++) {
             if (nums[i] != i) {
                 return i;
@@ -22,8 +28,8 @@ class MissingNumber {
         }
         return i;
     }
-    
-    public void swap(int[] arr, int first, int second) {
+
+    private static void swap(int[] arr, int first, int second) {
         int temp = arr[first];
         arr[first] = arr[second];
         arr[second] = temp;
