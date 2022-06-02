@@ -1,23 +1,16 @@
+// https://leetcode.com/problems/running-sum-of-1d-array/
 package Arrays;
 
-// my approach
-/* class RunningSumOf1DArray {
-    public int[] runningSum(int[] nums) {
-        int[] runningSum = new int[nums.length];
+import java.util.Arrays;
 
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = 0; j <= i; j++) {
-                runningSum[i] += nums[j];
-            }
-        }
-
-        return runningSum;
-    }
-} */
-
-// required approach
 class RunningSumOf1DArray {
-    public int[] runningSum(int[] nums) {
+
+    public static void main(String[] args) {
+        int[] nums = {1,2,3,4};
+        System.out.println(Arrays.toString(runningSum(nums)));
+    }
+
+    public static int[] runningSum(int[] nums) {
 
         for (int i = 1; i < nums.length; i++) {
             nums[i] += nums[i - 1];

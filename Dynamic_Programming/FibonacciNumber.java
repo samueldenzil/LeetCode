@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/fibonacci-number/
-package All_Problems;
+package Dynamic_Programming;
 
 import java.util.Arrays;
 
@@ -29,7 +29,7 @@ public class FibonacciNumber {
         return prev;
     }
 
-    
+
     // TC: O(n)
     // SC: O(n)
     /* public static int fib(int n) {
@@ -49,7 +49,7 @@ public class FibonacciNumber {
         return dp[n];
     } */
 
-    
+
     // TC: O(n)
     // SC: O(n) + O(n)
     /* public static int fib(int n) {
