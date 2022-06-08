@@ -1,46 +1,38 @@
+// https://leetcode.com/problems/pascals-triangle/
 package Dynamic_Programming;
 
 import java.util.List;
 import java.util.ArrayList;
-// https://leetcode.com/problems/pascals-triangle/
 
-class PascalsTriangle {
-    public List<List<Integer>> generate(int numRows) {
-        
-        List<List<Integer>> dpList = new ArrayList<>();
-        
-        // base case
-        // ans if numRows = 1
-        List<Integer> dp1 = new ArrayList<>();
-        dp1.add(1);
-        dpList.add(dp1);
-        
-        if (numRows == 1) {
-            return dpList;
+public class PascalsTriangle {
+
+    public static void main(String[] args) {
+        int numRows = 4;
+        List<List<Integer>> ans = generate(numRows);
+
+        for (List<Integer> row : ans) {
+            System.out.println(row);
         }
-        
-        // ans if numRows = 2
-        List<Integer> dp2 = new ArrayList<>();
-        dp2.add(1);
-        dp2.add(1);
-        dpList.add(dp2);
-        
-        for (int i = 2; i < numRows; i++) {
-            List<Integer> row = new ArrayList<>();
-            // inserting the first element
-            row.add(1);
-            
-            for (int j = 0; j < i - 1; j++) {
-                List<Integer> prevRow = dpList.get(i - 1);
-                row.add(prevRow.get(j) + prevRow.get(j + 1));
+    }
+
+    public static List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> prev = null;
+
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> curr = new ArrayList<>();
+            for (int j = 0; j < i + 1; j++) {
+                if (j == 0 || j == i) {
+                    curr.add(1);
+                } else {
+                    int temp = prev.get(j - 1) + prev.get(j);
+                    curr.add(temp);
+                }
             }
-            
-            // inserting the last element
-            row.add(1);
-            
-            dpList.add(row);
+            prev = curr;
+            ans.add(curr);
         }
-        
-        return dpList;
+
+        return ans;
     }
 }
