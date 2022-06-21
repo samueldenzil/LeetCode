@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BFS_DetectCycleInAnUndirectedGraph {
+public class DetectCycleInAnUndirectedGraph_BFS {
 
     public static void main(String[] args) {
         int V = 4;
