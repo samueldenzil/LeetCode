@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/course-schedule-iii/
-package Arrays;
+package Heaps;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;
