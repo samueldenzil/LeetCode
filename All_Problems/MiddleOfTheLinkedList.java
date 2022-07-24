@@ -3,7 +3,19 @@ package All_Problems;
 
 public class MiddleOfTheLinkedList {
 
-    public static ListNode middleNode(ListNode head) {
+    public ListNode middleNode(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
+
+    /* public ListNode middleNode(ListNode head) {
         ListNode temp = head;
         int n = 0;
 
@@ -20,5 +32,5 @@ public class MiddleOfTheLinkedList {
         }
 
         return temp;
-    }
+    } */
 }
