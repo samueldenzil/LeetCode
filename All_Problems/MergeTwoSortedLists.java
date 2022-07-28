@@ -12,12 +12,11 @@ class MergeTwoSortedLists {
             if (list1.val < list2.val) {
                 handler.next = list1;
                 list1 = list1.next;
-                handler = handler.next;
             } else {
                 handler.next = list2;
                 list2 = list2.next;
-                handler = handler.next;
             }
+            handler = handler.next;
         }
 
         while (list1 != null) {
