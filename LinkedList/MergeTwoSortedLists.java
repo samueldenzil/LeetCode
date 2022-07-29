@@ -4,7 +4,8 @@ package LinkedList;
 
 class MergeTwoSortedLists {
 
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+    // Iterative Approach
+    public ListNode mergeTwoListsIterative(ListNode list1, ListNode list2) {
         ListNode head = new ListNode(0);
         ListNode handler = head;
 
@@ -32,5 +33,23 @@ class MergeTwoSortedLists {
         }
 
         return head.next;
+    }
+
+    // Recursive Approach
+    public ListNode mergeTwoListsRecursive(ListNode list1, ListNode list2) {
+        if (list1 == null) {
+            return list2;
+        }
+        if (list2 == null) {
+            return list1;
+        }
+
+        if (list1.val < list2.val) {
+            list1.next = mergeTwoListsRecursive(list1.next, list2);
+            return list1;
+        } else {
+            list2.next = mergeTwoListsRecursive(list1, list2.next);
+            return list2;
+        }
     }
 }
