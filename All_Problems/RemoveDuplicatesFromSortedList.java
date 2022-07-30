@@ -3,22 +3,42 @@ package All_Problems;
 
 public class RemoveDuplicatesFromSortedList {
 
-    public static ListNode deleteDuplicates(ListNode head) {
-        ListNode dummy = new ListNode(0, head);
+    // Iterative Approach
+    // TC: O(n)
+    // SC: O(1)
+    public static ListNode deleteDuplicatesIterative(ListNode head) {
         ListNode temp = head;
-        ListNode prev = dummy;
-
-        while (temp != null) {
-            if (temp.next != null && temp.val == temp.next.val) {
-                while (temp.next != null && temp.val == temp.next.val) {
-                    temp = temp.next;
-                }
-            }
-            prev.next = temp;
-            prev = prev.next;
-            temp = temp.next;
+        if (head == null) {
+            return null;
         }
 
-        return dummy.next;
+        while (temp.next != null) {
+            if (temp.val == temp.next.val) {
+                temp.next = temp.next.next;
+            } else {
+                temp = temp.next;
+            }
+        }
+
+        return head;
+    }
+
+    
+    // Recursive Approach
+    // TC: O(n)
+    // SC: O(n)
+    public ListNode deleteDuplicatesRecursive(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode newHead = deleteDuplicatesRecursive(head.next);
+
+        if (head.val == newHead.val) {
+            return newHead;
+        }
+
+        head.next = newHead;
+        return head;
     }
 }
