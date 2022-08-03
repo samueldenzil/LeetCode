@@ -1,22 +1,38 @@
 // https://leetcode.com/problems/intersection-of-two-linked-lists
 package LinkedList;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 public class IntersectionOfTwoLinkedLists {
 
-    private static void generateLinkedList(ListNode head, int[] arr) {
-        int n = arr.length;
-        for (int i = 1; i < n; i++) {
-            head.next = new ListNode(arr[i]);
-            head = head.next;
+    // TC: O(n + m)
+    // SC: O(1)
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode a = headA;
+        ListNode b = headB;
+
+        while (a != b) {
+            if (a == null) {
+                a = headB;
+            } else {
+                a = a.next;
+            }
+
+            if (b == null) {
+                b = headA;
+            } else {
+                b = b.next;
+            }
         }
+
+        return a;
     }
+
 
     // TC: O(n + m)
     // SC: O(1)
-    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    /* public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode tempA = headA;
         ListNode tempB = headB;
 
@@ -50,26 +66,24 @@ public class IntersectionOfTwoLinkedLists {
         }
 
         return tempA;
-    }
+    } */
 
 
     // TC: O(n + m)
     // SC: O(n)
     /* public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        ListNode tempA = headA;
-        ListNode tempB = headB;
-        List<ListNode> list = new ArrayList<>();
+        Set<ListNode> set = new HashSet<>();
 
-        while (tempA != null) {
-            list.add(tempA);
-            tempA = tempA.next;
+        while (headA != null) {
+            set.add(headA);
+            headA = headA.next;
         }
 
-        while (tempB != null) {
-            if (list.contains(tempB)) {
-                return tempB;
+        while (headB != null) {
+            if (set.contains(headB)) {
+                return headB;
             }
-            tempB = tempB.next;
+            headB = headB.next;
         }
 
         return null;
