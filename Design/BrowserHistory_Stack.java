@@ -1,49 +1,43 @@
 // https://leetcode.com/problems/design-browser-history/
-package LinkedList;
+package Design;
 
-import Design.BrowserHistory_Stack;
+import java.util.ArrayList;
+import java.util.List;
 
-class BrowserHistory {
+public class BrowserHistory_Stack {
 
-    static class Node {
-        String url;
-        Node prev;
-        Node next;
+    List<String> stack;
+    int pointerIndex = 0;
 
-        Node(String url) {
-            this.url = url;
-            prev = null;
-            next = null;
-        }
-    }
-
-    Node ptr;
-
-    public BrowserHistory(String homepage) {
-        ptr = new Node(homepage);
+    public BrowserHistory_Stack(String homepage) {
+        stack = new ArrayList<>();
+        stack.add(pointerIndex, homepage);
     }
 
     public void visit(String url) {
-        Node temp = new Node(url);
-        temp.prev = ptr;
-        ptr.next = temp;
-        ptr = ptr.next;
+        pointerIndex += 1;
+        stack.add(pointerIndex, url);
+        int temp = pointerIndex;
+        while (temp < stack.size() - 1) {
+            stack.remove(temp + 1);
+        }
+        pointerIndex = stack.size() - 1;
     }
 
     public String back(int steps) {
-        while (steps > 0 && ptr.prev != null) {
-            ptr = ptr.prev;
-            steps--;
+        pointerIndex -= steps;
+        if (pointerIndex < 0) {
+            pointerIndex = 0;
         }
-        return ptr.url;
+        return stack.get(pointerIndex);
     }
 
     public String forward(int steps) {
-        while (steps > 0 && ptr.next != null) {
-            ptr = ptr.next;
-            steps--;
+        pointerIndex += steps;
+        if (pointerIndex >= stack.size()) {
+            pointerIndex = stack.size() - 1;
         }
-        return ptr.url;
+        return stack.get(pointerIndex);
     }
 
     public static void main(String[] args) {

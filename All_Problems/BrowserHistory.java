@@ -1,47 +1,53 @@
 // https://leetcode.com/problems/design-browser-history/
 package All_Problems;
 
-import java.util.ArrayList;
-import java.util.List;
+import Design.BrowserHistory_Stack;
 
-public class BrowserHistory {
+class BrowserHistory {
 
-    List<String> stack;
-    int pointerIndex = 0;
+    static class Node {
+        String url;
+        Node prev;
+        Node next;
+
+        Node(String url) {
+            this.url = url;
+            prev = null;
+            next = null;
+        }
+    }
+
+    Node ptr;
 
     public BrowserHistory(String homepage) {
-        stack = new ArrayList<>();
-        stack.add(pointerIndex, homepage);
+        ptr = new Node(homepage);
     }
 
     public void visit(String url) {
-        pointerIndex += 1;
-        stack.add(pointerIndex, url);
-        int temp = pointerIndex;
-        while (temp < stack.size() - 1) {
-            stack.remove(temp + 1);
-        }
-        pointerIndex = stack.size() - 1;
+        Node temp = new Node(url);
+        temp.prev = ptr;
+        ptr.next = temp;
+        ptr = ptr.next;
     }
 
     public String back(int steps) {
-        pointerIndex -= steps;
-        if (pointerIndex < 0) {
-            pointerIndex = 0;
+        while (steps > 0 && ptr.prev != null) {
+            ptr = ptr.prev;
+            steps--;
         }
-        return stack.get(pointerIndex);
+        return ptr.url;
     }
 
     public String forward(int steps) {
-        pointerIndex += steps;
-        if (pointerIndex >= stack.size()) {
-            pointerIndex = stack.size() - 1;
+        while (steps > 0 && ptr.next != null) {
+            ptr = ptr.next;
+            steps--;
         }
-        return stack.get(pointerIndex);
+        return ptr.url;
     }
 
     public static void main(String[] args) {
-        BrowserHistory browserHistory = new BrowserHistory("leetcode.com");
+        BrowserHistory_Stack browserHistory = new BrowserHistory_Stack("leetcode.com");
         // You are in "leetcode.com". Visit "google.com"
         browserHistory.visit("google.com");
         // You are in "google.com". Visit "facebook.com"
