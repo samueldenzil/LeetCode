@@ -22,10 +22,12 @@ public class RotateImage {
         // to rotate the matrix 90 degrees (clockwise)
         // step 1) get its transpose
         // step 2) reverse the columns
-
         int n = matrix.length;
+        transpose(matrix, n);
+        reverse(matrix, n);
+    }
 
-        // transpose
+    private static void transpose(int[][] matrix, int n) {
         for (int r = 0; r < n; r++) {
             for (int c = r; c < n; c++) {
                 int temp = matrix[r][c];
@@ -33,8 +35,9 @@ public class RotateImage {
                 matrix[c][r] = temp;
             }
         }
+    }
 
-        // reverse
+    private static void reverse(int[][] matrix, int n) {
         for (int[] row : matrix) {
             int i = 0;
             int j = n - 1;
