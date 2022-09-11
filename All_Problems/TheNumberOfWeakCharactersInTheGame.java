@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class TheNumberOfWeakCharactersInTheGame {
 
     public static void main(String[] args) {
-        int[][] properties = {{1, 1}, {2, 1}, {2, 2}, {1, 2}};
+        int[][] properties = {{5, 5}, {6, 3}, {3, 6}};
         System.out.println(numberOfWeakCharacters(properties));
     }
 
