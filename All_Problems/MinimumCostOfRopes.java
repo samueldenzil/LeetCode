@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 public class MinimumCostOfRopes {
 
     public static void main(String[] args) {
-        long[] arr = {4, 3, 2, 6};
+        long[] arr = {4, 2, 7, 6, 9};
         int n = arr.length;
         System.out.println(minCost(arr,n));
     }
