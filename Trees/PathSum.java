@@ -4,27 +4,18 @@ package Trees;
 public class PathSum {
 
     public boolean hasPathSum(TreeNode root, int targetSum) {
-        // edge case
-        if (root == null) {
-            return false;
-        }
-        return helper(root, targetSum);
-    }
-
-    private boolean helper(TreeNode root, int target) {
         if (root == null) {
             return false;
         }
 
-        // if curr node is the leaf node
         if (root.left == null && root.right == null) {
-            return root.val - target == 0;
+            return targetSum - root.val == 0;
         }
 
-        boolean left = helper(root.left, target - root.val);
+        boolean left = hasPathSum(root.left, targetSum - root.val);
         boolean right = false;
         if (!left) {
-            right = helper(root.right, target - root.val);
+            right = hasPathSum(root.right, targetSum - root.val);
         }
 
         return left || right;
