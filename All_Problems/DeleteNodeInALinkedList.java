@@ -4,13 +4,7 @@ package All_Problems;
 public class DeleteNodeInALinkedList {
 
     public void deleteNode(ListNode node) {
-        swap(node, node.next);
+        node.val = node.next.val;
         node.next = node.next.next;
-    }
-
-    private void swap(ListNode n1, ListNode n2) {
-        int temp = n1.val;
-        n1.val = n2.val;
-        n2.val = temp;
     }
 }
