@@ -1,4 +1,4 @@
-// https://practice.geeksforgeeks.org/problems/number-of-enclaves/1
+// https://leetcode.com/problems/number-of-enclaves/
 package Graph;
 
 import java.util.Queue;
@@ -13,11 +13,11 @@ public class NumberOfEnclaves {
                 {0, 1, 1, 0},
                 {0, 0, 0, 0}
         };
-        System.out.println(numberOfEnclaves(grid));
+        System.out.println(numEnclaves(grid));
     }
 
     // DFS Solution
-    public static int numberOfEnclaves(int[][] grid) {
+    public static int numEnclaves(int[][] grid) {
         int n = grid.length;
         int m = grid[0].length;
 
@@ -69,7 +69,7 @@ public class NumberOfEnclaves {
     }
 
     // BFS Solution
-    /* public static int numberOfEnclaves(int[][] grid) {
+    /* public static int numEnclaves(int[][] grid) {
         int n = grid.length;
         int m = grid[0].length;
 
