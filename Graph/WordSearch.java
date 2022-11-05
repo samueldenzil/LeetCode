@@ -1,20 +1,19 @@
-// https://practice.geeksforgeeks.org/problems/word-search/1
+// https://leetcode.com/problems/word-search/
 package Graph;
 
 public class WordSearch {
 
     public static void main(String[] args) {
         char[][] board = {
-                {'a', 'g', 'b', 'c'},
-                {'q', 'e', 'e', 'l'},
-                {'g', 'b', 'k', 's'}
+                {'A', 'B', 'C', 'E'},
+                {'S', 'F', 'C', 'S'},
+                {'A', 'D', 'E', 'E'}
         };
-        String word = "geeks";
-        System.out.println(isWordExist(board, word));
+        String word = "ABCCED";
+        System.out.println(exist(board, word));
     }
 
-    public static boolean isWordExist(char[][] board, String word) {
-        // Code here
+    public static boolean exist(char[][] board, String word) {
         int n = board.length;
         int m = board[0].length;
         boolean[][] vis = new boolean[n][m];
