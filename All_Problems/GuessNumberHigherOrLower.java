@@ -1,7 +1,13 @@
-package All_Problems;
 // https://leetcode.com/problems/guess-number-higher-or-lower/
+package All_Problems;
 
 public class GuessNumberHigherOrLower {
+
+    public static void main(String[] args) {
+        int n = 10;
+        System.out.println(guessNumber(n));
+    }
+
     public static int guess(int num) {
         int pick = 6;
         if (pick == num) {
@@ -18,7 +24,6 @@ public class GuessNumberHigherOrLower {
         int end = n;
 
         while (start <= end) {
-
             int mid = start + (end - start) / 2;
             int checkNum = guess(mid);
 
