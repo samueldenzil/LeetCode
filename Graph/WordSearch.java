@@ -14,47 +14,53 @@ public class WordSearch {
     }
 
     public static boolean exist(char[][] board, String word) {
-        int n = board.length;
-        int m = board[0].length;
-        boolean[][] vis = new boolean[n][m];
-        int[] dx = {1, 0, -1, 0};
-        int[] dy = {0, 1, 0, -1};
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
+        int m = board.length;
+        int n = board[0].length;
+
+        boolean[][] vis = new boolean[m][n];
+
+        int[] dx = {0, 1, 0, -1};
+        int[] dy = {1, 0, -1, 0};
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
                 if (board[i][j] == word.charAt(0)) {
-                    boolean result = helper(i, j, 1, board, vis, word, dx, dy, "" + board[i][j]);
+                    boolean result = helper(i, j, 1, board, vis, word, dx, dy);
                     if (result) {
                         return true;
                     }
                 }
             }
         }
+
         return false;
     }
 
-    private static boolean helper(int row, int col, int ind, char[][] board, boolean[][] vis, String word, int[] dx, int[] dy, String curr) {
+    private static boolean helper(int i, int j, int ind, char[][] board, boolean[][] vis, String word, int[] dx, int[] dy) {
         if (ind == word.length()) {
             return true;
         }
-        vis[row][col] = true;
-        char c = word.charAt(ind);
-        for (int i = 0; i < 4; i++) {
-            int nrow = row + dx[i];
-            int ncol = col + dy[i];
-            if (isValid(nrow, ncol, board, vis, c)) {
-                boolean result = helper(nrow, ncol, ind + 1, board, vis, word, dx, dy, curr + c);
+
+        vis[i][j] = true;
+
+        for (int k = 0; k < 4; k++) {
+            int nI = i + dx[k];
+            int nJ = j + dy[k];
+
+            if (isValid(nI, nJ, board, vis) && board[nI][nJ] == word.charAt(ind)) {
+                boolean result = helper(nI, nJ, ind + 1, board, vis, word, dx, dy);
                 if (result) {
                     return true;
                 }
             }
         }
-        vis[row][col] = false;
+        vis[i][j] = false;
         return false;
     }
 
-    private static boolean isValid(int row, int col, char[][] board, boolean[][] vis, char c) {
-        int n = vis.length;
-        int m = vis[0].length;
-        return row >= 0 && row < n && col >= 0 && col < m && board[row][col] == c && !vis[row][col];
+    private static boolean isValid(int i, int j, char[][] board, boolean[][] vis) {
+        int m = board.length;
+        int n = board[0].length;
+        return i >= 0 && i < m && j >= 0 && j < n && !vis[i][j];
     }
 }
