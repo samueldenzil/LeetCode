@@ -3,7 +3,18 @@ package LinkedList;
 
 public class MiddleOfTheLinkedList {
 
-    public ListNode middleNode(ListNode head) {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        ListNode head = generateLinkedList(arr);
+
+        ListNode ans = middleNode(head);
+        while (ans != null) {
+            System.out.print(ans.val + " ");
+            ans = ans.next;
+        }
+    }
+
+    public static ListNode middleNode(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
 
@@ -15,22 +26,13 @@ public class MiddleOfTheLinkedList {
         return slow;
     }
 
-    /* public ListNode middleNode(ListNode head) {
+    private static ListNode generateLinkedList(int[] arr) {
+        ListNode head = new ListNode(arr[0]);
         ListNode temp = head;
-        int n = 0;
-
-        while (temp != null) {
-            n++;
+        for (int i = 1; i < arr.length; i++) {
+            temp.next = new ListNode(arr[i]);
             temp = temp.next;
         }
-
-        temp = head;
-        int i = 0;
-        while (i < n / 2) {
-            temp = temp.next;
-            i++;
-        }
-
-        return temp;
-    } */
+        return head;
+    }
 }
