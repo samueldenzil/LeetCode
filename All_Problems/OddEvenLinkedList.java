@@ -4,28 +4,20 @@ package All_Problems;
 public class OddEvenLinkedList {
 
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        ListNode temp = head;
-        head.next = new ListNode(2);
-        head = head.next;
-        head.next = new ListNode(3);
-        head = head.next;
-        head.next = new ListNode(4);
-        head = head.next;
-        head.next = new ListNode(5);
-        temp = oddEvenList(temp);
+        int[] arr = {1, 2, 3, 4, 5};
+        ListNode head = generateLinkedList(arr);
 
-        while (temp != null) {
-            System.out.print(temp.val + " --> ");
-            temp = temp.next;
+        ListNode ans = oddEvenList(head);
+        while (ans != null) {
+            System.out.print(ans.val + " ");
+            ans = ans.next;
         }
     }
 
     public static ListNode oddEvenList(ListNode head) {
-        if (head == null)
+        if (head == null || head.next == null) {
             return null;
-        else if (head.next == null)
-            return head;
+        }
 
         ListNode odd = new ListNode(0);
         ListNode oddTemp = odd;
@@ -46,5 +38,15 @@ public class OddEvenLinkedList {
         odd.next = evenTemp.next;
         even.next = null;
         return oddTemp.next;
+    }
+
+    private static ListNode generateLinkedList(int[] arr) {
+        ListNode head = new ListNode(arr[0]);
+        ListNode temp = head;
+        for (int i = 1; i < arr.length; i++) {
+            temp.next = new ListNode(arr[i]);
+            temp = temp.next;
+        }
+        return head;
     }
 }
