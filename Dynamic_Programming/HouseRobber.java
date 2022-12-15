@@ -10,28 +10,36 @@ public class HouseRobber {
         System.out.println(rob(nums));
     }
 
+    // Memoization
     // TC: O(n)
-    // SC: O(1)
+    // SC: O(n) + O(n)
     public static int rob(int[] nums) {
         int n = nums.length;
+        int[] dp = new int[n];
+        Arrays.fill(dp, -1);
+        return helper(n - 1, nums, dp);
+    }
 
+    private static int helper(int ind, int[] nums, int[] dp) {
         // Base case
-        int prev = nums[0];
-        int prev2 = 0;
-
-        for (int i = 1; i < n; i++) {
-            int pick = nums[i] + prev2;
-            int notPick = 0 + prev;
-
-            int currI = Math.max(pick, notPick);
-            prev2 = prev;
-            prev = currI;
+        if (ind == 0) {
+            return nums[ind];
+        }
+        if (ind < 0) {
+            return 0;
+        }
+        if (dp[ind] != -1) {
+            return dp[ind];
         }
 
-        return prev;
+        int pick = nums[ind] + helper(ind - 2, nums, dp);
+        int notPick = 0 + helper(ind - 1, nums, dp);
+
+        return dp[ind] = Math.max(pick, notPick);
     }
 
 
+    // Tabulation
     // TC: O(n)
     // SC: O(n)
     /* public static int rob(int[] nums) {
@@ -55,30 +63,25 @@ public class HouseRobber {
     } */
 
 
+    // Tabulation + Space Optimization
     // TC: O(n)
-    // SC: O(n) + O(n)
+    // SC: O(1)
     /* public static int rob(int[] nums) {
         int n = nums.length;
-        int[] dp = new int[n];
-        Arrays.fill(dp, -1);
-        return helper(n - 1, nums, dp);
-    }
 
-    private static int helper(int ind, int[] nums, int[] dp) {
         // Base case
-        if (ind == 0) {
-            return nums[ind];
-        }
-        if (ind < 0) {
-            return 0;
-        }
-        if (dp[ind] != -1) {
-            return dp[ind];
+        int prev = nums[0];
+        int prev2 = 0;
+
+        for (int i = 1; i < n; i++) {
+            int pick = nums[i] + prev2;
+            int notPick = 0 + prev;
+
+            int currI = Math.max(pick, notPick);
+            prev2 = prev;
+            prev = currI;
         }
 
-        int pick = nums[ind] + helper(ind - 2, nums, dp);
-        int notPick = 0 + helper(ind - 1, nums, dp);
-
-        return dp[ind] = Math.max(pick, notPick);
+        return prev;
     } */
 }
