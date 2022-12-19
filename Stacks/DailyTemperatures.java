@@ -19,12 +19,17 @@ public class DailyTemperatures {
 
         Stack<Integer> stack = new Stack<>();   // will be storing the index of the elements
 
-        for (int i = 0; i < n; i++) {
-            while (!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]) {
-                ans[stack.peek()] = i - stack.peek();
+        for (int i = n - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && temperatures[i] >= temperatures[stack.peek()]) {
                 stack.pop();
             }
-            stack.push(i);
+
+            if (stack.isEmpty()) {
+                ans[i] = 0;
+            } else {
+                ans[i] = stack.peek() - i;
+            }
+            stack.add(i);
         }
 
         return ans;
