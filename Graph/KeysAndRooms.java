@@ -3,6 +3,8 @@ package Graph;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class KeysAndRooms {
 
@@ -12,16 +14,16 @@ public class KeysAndRooms {
         for (int i = 0; i < roomsArr.length; i++) {
             rooms.add(new ArrayList<>());
         }
-        for (int i = 0; i < roomsArr.length; i++) {
-            int u = i;
-            for (int j = 0; j < roomsArr[i].length; j++) {
-                int v = roomsArr[i][j];
+        for (int u = 0; u < roomsArr.length; u++) {
+            for (int j = 0; j < roomsArr[u].length; j++) {
+                int v = roomsArr[u][j];
                 rooms.get(u).add(v);
             }
         }
         System.out.println(canVisitAllRooms(rooms));
     }
 
+    // DFS Solution
     public static boolean canVisitAllRooms(List<List<Integer>> rooms) {
         int n = rooms.size();
         boolean[] vis = new boolean[n];
@@ -44,4 +46,31 @@ public class KeysAndRooms {
             }
         }
     }
+
+
+    // BFS Solution
+    /* public static boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        int n = rooms.size();
+        boolean[] vis = new boolean[n];
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(0);
+        vis[0] = true;
+
+        while (!queue.isEmpty()) {
+            int node = queue.poll();
+            for (int it : rooms.get(node)) {
+                if (!vis[it]) {
+                    queue.add(it);
+                    vis[it] = true;
+                }
+            }
+        }
+
+        for (boolean it : vis) {
+            if (!it) {
+                return false;
+            }
+        }
+        return true;
+    } */
 }
