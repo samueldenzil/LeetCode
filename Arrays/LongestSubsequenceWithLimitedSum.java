@@ -12,17 +12,19 @@ public class LongestSubsequenceWithLimitedSum {
     }
 
     public static int[] answerQueries(int[] nums, int[] queries) {
+        int n = nums.length;
         int m = queries.length;
         int[] ans = new int[m];
+
         Arrays.sort(nums);
-        for (int i = 1; i < nums.length; i++) {
+
+        for (int i = 1; i < n; i++) {
             nums[i] += nums[i - 1];
         }
 
         int i = 0;
         for (int q : queries) {
-            ans[i] = binarySearch(nums, q);
-            i++;
+            ans[i++] = binarySearch(nums, q);
         }
 
         return ans;
@@ -32,6 +34,7 @@ public class LongestSubsequenceWithLimitedSum {
         int start = 0;
         int end = nums.length - 1;
         int ans = -1;
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
             if (nums[mid] <= target) {
@@ -41,7 +44,6 @@ public class LongestSubsequenceWithLimitedSum {
                 end = mid - 1;
             }
         }
-
         return ans + 1;
     }
 }
