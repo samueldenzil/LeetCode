@@ -10,46 +10,8 @@ public class JumpGame {
         System.out.println(canJump(nums));
     }
 
-    // Tabulation
-    public static boolean canJump(int[] nums) {
-        int n = nums.length;
-
-        boolean[] dp = new boolean[n];
-
-        // base case
-        dp[n - 1] = true;
-
-        for (int ind = n - 2; ind >= 0; ind--) {
-            int allowedJumps = nums[ind];
-
-            boolean flag = false;
-
-            for (int i = allowedJumps; i >= 1; i--) {
-                if (isValidJump(ind, i, n)) {
-                    boolean curr = dp[ind + i];
-                    if (curr) {
-                        flag = true;
-                        break;
-                    }
-                }
-            }
-
-            dp[ind] = flag;
-        }
-
-        return dp[0];
-    }
-
-    private static boolean isValidJump(int currIndex, int step, int n) {
-        if (currIndex + step < n) {
-            return true;
-        }
-        return false;
-    }
-
-
     // Memoization
-    /* public static boolean canJump(int[] nums) {
+    public static boolean canJump(int[] nums) {
         int n = nums.length;
 
         int[] dp = new int[n];
@@ -83,10 +45,38 @@ public class JumpGame {
         return false;
     }
 
-    private static boolean isValidJump(int currIndex, int step, int n) {
-        if (currIndex + step < n) {
-            return true;
+
+    // Tabulation
+    /* public static boolean canJump(int[] nums) {
+        int n = nums.length;
+
+        boolean[] dp = new boolean[n];
+
+        // base case
+        dp[n - 1] = true;
+
+        for (int ind = n - 2; ind >= 0; ind--) {
+            int allowedJumps = nums[ind];
+
+            boolean flag = false;
+
+            for (int i = allowedJumps; i >= 1; i--) {
+                if (isValidJump(ind, i, n)) {
+                    boolean curr = dp[ind + i];
+                    if (curr) {
+                        flag = true;
+                        break;
+                    }
+                }
+            }
+
+            dp[ind] = flag;
         }
-        return false;
+
+        return dp[0];
     } */
+
+    private static boolean isValidJump(int currIndex, int step, int n) {
+        return currIndex + step < n;
+    }
 }
