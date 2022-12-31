@@ -1,8 +1,11 @@
 // https://leetcode.com/problems/all-paths-from-source-to-target/
 package Graph;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class AllPathsFromSourceToTarget {
 
@@ -12,31 +15,54 @@ public class AllPathsFromSourceToTarget {
     }
 
     public static List<List<Integer>> allPathsSourceTarget(int[][] graph) {
-        int V = graph.length;
         List<List<Integer>> ans = new ArrayList<>();
-        boolean[] vis = new boolean[V];
-
-        dfs(0, graph, vis, ans, new ArrayList<>());
-
+        helper(0, graph, ans, new ArrayList<>());
         return ans;
     }
 
-    private static void dfs(int node, int[][] graph, boolean[] vis, List<List<Integer>> ans, List<Integer> curr) {
+    // DFS Solution
+    private static void helper(int node, int[][] graph, List<List<Integer>> ans, List<Integer> curr) {
+        curr.add(node);
+
+        // base case
         if (node == graph.length - 1) {
-            curr.add(node);
             ans.add(new ArrayList<>(curr));
             curr.remove(curr.size() - 1);
             return;
         }
 
-        vis[node] = true;
-        curr.add(node);
         for (int it : graph[node]) {
-            if (!vis[it]) {
-                dfs(it, graph, vis, ans, curr);
-            }
+            helper(it, graph, ans, curr);
         }
-        vis[node] = false;
+
         curr.remove(curr.size() - 1);
     }
+
+
+    // BFS Solution
+    /* public static List<List<Integer>> allPathsSourceTarget(int[][] graph) {
+        int startNode = 0;
+        int endNode = graph.length - 1;
+        List<List<Integer>> ans = new ArrayList<>();
+        Queue<List<Integer>> queue = new LinkedList<>();
+
+        queue.add(Arrays.asList(startNode));
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> list = queue.poll();
+            int lastNode = list.get(list.size() - 1);
+            if (lastNode == endNode) {
+                ans.add(list);
+            }
+
+            for (int it : graph[lastNode]) {
+                List<Integer> copyList = new ArrayList<>(list);
+                copyList.add(it);
+                queue.add(copyList);
+            }
+        }
+
+        return ans;
+    } */
 }
