@@ -8,7 +8,7 @@ import java.util.Stack;
 public class BinaryTreePreorderTraversal {
 
     // Iterative Approach
-    public List<Integer> preorderTraversal(TreeNode root) {
+    public static List<Integer> preorderTraversal(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
         List<Integer> preorder = new ArrayList<>();
 
@@ -30,13 +30,13 @@ public class BinaryTreePreorderTraversal {
     }
 
     // Recursive Approach
-    /* public List<Integer> preorderTraversal(TreeNode root) {
+    /* public static List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> preorder = new ArrayList<>();
         traverse(root, preorder);
         return preorder;
     }
 
-    public void traverse(TreeNode node, List<Integer> preorder) {
+    public static void traverse(TreeNode node, List<Integer> preorder) {
         // Base case
         if (node == null) {
             return;
