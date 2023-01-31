@@ -10,32 +10,31 @@ public class NthTribonacciNumber {
         System.out.println(tribonacci(n));
     }
 
+    // Memoization
     // TC: O(n)
-    // SC: O(1)
+    // SC: O(n) + O(n)
     public static int tribonacci(int n) {
-        int prev = 1;
-        int prev1 = 1;
-        int prev2 = 0;
+        int[] dp = new int[n + 1];
+        Arrays.fill(dp, -1);
+        return helper(n, dp);
+    }
 
-        if (n == 0) {
-            return prev2;
-        } else if (n == 1) {
-            return prev1;
-        } else if (n == 2) {
-            return prev;
+    private static int helper(int ind, int[] dp) {
+        if (ind == 0) {
+            return 0;
+        } else if (ind == 1 || ind == 2) {
+            return 1;
         }
 
-        for (int i = 3; i <= n; i++) {
-            int curr = prev + prev1 + prev2;
-            prev2 = prev1;
-            prev1 = prev;
-            prev = curr;
+        if (dp[ind] != -1) {
+            return dp[ind];
         }
 
-        return prev;
+        return dp[ind] = helper(ind - 1, dp) + helper(ind - 2, dp) + helper(ind - 3, dp);
     }
 
 
+    // Tabulation
     // TC: O(n)
     // SC: O(n)
     /* public static int tribonacci(int n) {
@@ -61,26 +60,29 @@ public class NthTribonacciNumber {
     } */
 
 
+    // Tabulation + Space Optimization
     // TC: O(n)
-    // SC: O(n) + O(n)
+    // SC: O(1)
     /* public static int tribonacci(int n) {
-        int[] dp = new int[n + 1];
-        Arrays.fill(dp, -1);
+        int prev = 1;
+        int prev1 = 1;
+        int prev2 = 0;
 
-        return helper(n, dp);
-    }
-
-    private static int helper(int ind, int[] dp) {
-        if (ind == 0) {
-            return 0;
-        } else if (ind == 1 || ind == 2) {
-            return 1;
+        if (n == 0) {
+            return prev2;
+        } else if (n == 1) {
+            return prev1;
+        } else if (n == 2) {
+            return prev;
         }
 
-        if (dp[ind] != -1) {
-            return dp[ind];
+        for (int i = 3; i <= n; i++) {
+            int curr = prev + prev1 + prev2;
+            prev2 = prev1;
+            prev1 = prev;
+            prev = curr;
         }
 
-        return dp[ind] = helper(ind - 1, dp) + helper(ind - 2, dp) + helper(ind - 3, dp);
+        return prev;
     } */
 }
