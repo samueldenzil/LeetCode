@@ -1,6 +1,8 @@
 // https://leetcode.com/problems/jump-game-ii/
 package All_Problems;
 
+import java.util.Arrays;
+
 public class JumpGameII {
 
     public static void main(String[] args) {
@@ -8,40 +10,11 @@ public class JumpGameII {
         System.out.println(jump(nums));
     }
 
+    // Memoization
     public static int jump(int[] nums) {
         int n = nums.length;
-
-        int[] dp = new int[n];
-
-        // base case
-        dp[n - 1] = 0;
-
-        for (int ind = n - 2; ind >= 0; ind--) {
-            int allowedJumps = nums[ind];
-            int min = (int) 1e9;
-
-            for (int step = allowedJumps; step >= 1; step--) {
-                int curr = 1;
-                int nextStep = ind + step;
-                if (nextStep < n) {
-                    curr += dp[nextStep];
-                }
-                min = Math.min(min, curr);
-            }
-
-            dp[ind] = min;
-        }
-
-        return dp[0];
-    }
-
-
-    /* public static int jump(int[] nums) {
-        int n = nums.length;
-
         int[] dp = new int[n];
         Arrays.fill(dp, -1);
-
         return helper(0, nums, n, dp);
     }
 
@@ -67,5 +40,34 @@ public class JumpGameII {
         }
 
         return dp[ind] = min;
+    }
+
+
+    // Tabulation
+    /* public static int jump(int[] nums) {
+        int n = nums.length;
+
+        int[] dp = new int[n];
+
+        // base case
+        dp[n - 1] = 0;
+
+        for (int ind = n - 2; ind >= 0; ind--) {
+            int allowedJumps = nums[ind];
+            int min = (int) 1e9;
+
+            for (int step = allowedJumps; step >= 1; step--) {
+                int curr = 1;
+                int nextStep = ind + step;
+                if (nextStep < n) {
+                    curr += dp[nextStep];
+                }
+                min = Math.min(min, curr);
+            }
+
+            dp[ind] = min;
+        }
+
+        return dp[0];
     } */
 }
