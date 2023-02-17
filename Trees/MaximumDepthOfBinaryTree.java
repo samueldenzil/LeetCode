@@ -20,7 +20,7 @@ public class MaximumDepthOfBinaryTree {
     }
 
     // Level order traversal
-    /* public static int maxDepth(TreeNode root) {
+    /* public int maxDepth(TreeNode root) {
         int depth = 0;
         Queue<TreeNode> queue = new LinkedList<>();
 
