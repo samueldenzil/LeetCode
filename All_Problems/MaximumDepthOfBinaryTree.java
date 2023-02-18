@@ -6,8 +6,14 @@ import java.util.LinkedList;
 
 public class MaximumDepthOfBinaryTree {
 
+    public static void main(String[] args) {
+        String[] arr = {"3", "9", "20", null, null, "15", "7"};
+        TreeNode root = generateTree(arr, 0);
+        System.out.println(maxDepth(root));
+    }
+
     // Recursive Approach
-    public int maxDepth(TreeNode root) {
+    public static int maxDepth(TreeNode root) {
         // Base case
         if (root == null) {
             return 0;
@@ -20,7 +26,7 @@ public class MaximumDepthOfBinaryTree {
     }
 
     // Level order traversal
-    /* public int maxDepth(TreeNode root) {
+    /* public static int maxDepth(TreeNode root) {
         int depth = 0;
         Queue<TreeNode> queue = new LinkedList<>();
 
@@ -46,4 +52,14 @@ public class MaximumDepthOfBinaryTree {
 
         return depth;
     } */
+
+    private static TreeNode generateTree(String[] arr, int i) {
+        TreeNode root = null;
+        if (i < arr.length && arr[i] != null) {
+            root = new TreeNode(Integer.parseInt(arr[i]));
+            root.left = generateTree(arr, i * 2 + 1);
+            root.right = generateTree(arr, i * 2 + 2);
+        }
+        return root;
+    }
 }
