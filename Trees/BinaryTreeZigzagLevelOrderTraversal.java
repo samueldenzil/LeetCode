@@ -9,48 +9,65 @@ import java.util.Queue;
 public class BinaryTreeZigzagLevelOrderTraversal {
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(3);
-        root.left = new TreeNode(9);
-        root.right = new TreeNode(20);
-        root.right.left = new TreeNode(15);
-        root.right.right = new TreeNode(7);
+        String[] arr = {"3", "9", "20", null, null, "15", "7"};
+        TreeNode root = generateTree(arr, 0);
         System.out.println(zigzagLevelOrder(root));
     }
 
     public static List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        List<List<Integer>> ans = new ArrayList<>();
+        if (root == null) {
+            return ans;
+        }
+
+        int level = 0;
+
         Queue<TreeNode> queue = new LinkedList<>();
-        List<List<Integer>> wrapList = new ArrayList<>();
-
-        if (root == null) return wrapList;
-
         queue.add(root);
-        boolean leftToRight = true;
-        // true -> left to right
-        // false -> right to left
 
         while (!queue.isEmpty()) {
             int size = queue.size();
-            List<Integer> level = new ArrayList<Integer>(size);
-
+            List<Integer> list = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 TreeNode node = queue.poll();
-
                 if (node.left != null) {
                     queue.add(node.left);
                 }
                 if (node.right != null) {
                     queue.add(node.right);
                 }
-
-                int index = leftToRight ? i : 0;
-                level.add(index, node.val);
+                list.add(node.val);
+            }
+            if (level % 2 == 1) {
+                reverse(list);
             }
 
-            leftToRight = !leftToRight;
-            wrapList.add(level);
+            ans.add(list);
+            level++;
         }
 
-        return wrapList;
+        return ans;
     }
 
+    private static void reverse(List<Integer> list) {
+        int start = 0;
+        int end = list.size() - 1;
+        while (start < end) {
+            int temp = list.get(start);
+            list.set(start, list.get(end));
+            list.set(end, temp);
+            start++;
+            end--;
+        }
+    }
+
+    private static TreeNode generateTree(String[] arr, int i) {
+        TreeNode root = null;
+        if (i < arr.length && arr[i] != null) {
+            root = new TreeNode(Integer.parseInt(arr[i]));
+            root.left = generateTree(arr, i * 2 + 1);
+            root.right = generateTree(arr, i * 2 + 2);
+        }
+        return root;
+    }
 }
