@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
-package All_Problems;
+package Searching;
 
 public class CapacityToShipPackagesWithinDDays {
 
