@@ -15,25 +15,23 @@ public class StringCompression {
     public static int compress(char[] chars) {
         int n = chars.length;
         int i = 0;
-        int j = 0;
+        int res = 0;
 
-        while (j < n) {
+        while (i < n) {
+            char currChar = chars[i];
             int count = 0;
-            char currChar = chars[j];
-            while (j < n && currChar == chars[j]) {
-                j++;
+            while (i < n && chars[i] == currChar) {
                 count++;
+                i++;
             }
-
-            chars[i++] = currChar;
-
+            chars[res++] = currChar;
             if (count > 1) {
                 for (char c : Integer.toString(count).toCharArray()) {
-                    chars[i++] = c;
+                    chars[res++] = c;
                 }
             }
         }
 
-        return i;
+        return res;
     }
 }
