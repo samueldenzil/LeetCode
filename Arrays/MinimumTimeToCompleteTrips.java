@@ -32,13 +32,11 @@ public class MinimumTimeToCompleteTrips {
 		return ans;
 	}
 
-	public static long tripsTake(int[] time, long sec) {
+	private static long tripsTake(int[] time, long sec) {
 		long tripCount = 0;
-
 		for (int item : time) {
 			tripCount += sec / item;
 		}
-
 		return tripCount;
 	}
 }
