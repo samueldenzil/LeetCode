@@ -11,7 +11,6 @@ public class KokoEatingBananas {
 
     public static int minEatingSpeed(int[] piles, int h) {
         int max = 0;
-
         for (int pile : piles) {
             max = Math.max(max, pile);
         }
@@ -19,33 +18,28 @@ public class KokoEatingBananas {
         // According to the constraints, Koko should eat at least 1 banana every hour
         int start = 1;
         int end = max;
-
-        int k = 0;
+        int k = -1;
         while (start <= end) {
-            int currentSpeed = start + (end - start) / 2;
-            int timeTakenToEatBananas = bananasEaten(piles, currentSpeed);
+            int mid = start + (end - start) / 2;
 
-            if (timeTakenToEatBananas > h) {
-                // Koko is eating slow, so you want Koko to eat fast
-                start = currentSpeed + 1;
-            } else {
-                // timeTakenToEatBananas <= h
+            if (timeTakenToEatBananasWithSpeedK(piles, mid) <= h) {
                 // this could be the answer but, also check what happens when Koko eats slowly
-                k = currentSpeed;
-                end = currentSpeed - 1;
+                k = mid;
+                end = mid - 1;
+            } else {
+                // Koko is eating slow, so you want Koko to eat fast
+                start = mid + 1;
             }
         }
 
         return k;
     }
 
-    public static int bananasEaten(int[] piles, int speed) {
-        int time = 0;
-
-        for (int pile : piles) {
-            time += (int) Math.ceil((double) pile / speed);
+    private static long timeTakenToEatBananasWithSpeedK(int[] piles, int k) {
+        long count = 0;
+        for (long pile : piles) {
+            count += Math.ceil((double) pile / k);
         }
-
-        return time;
+        return count;
     }
 }
