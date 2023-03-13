@@ -5,9 +5,24 @@ import java.util.PriorityQueue;
 
 public class MergeKSortedLists {
 
+    public static void main(String[] args) {
+        ListNode[] lists = {
+                generateLinkedList(new int[]{1, 4, 5}),
+                generateLinkedList(new int[]{1, 3, 4}),
+                generateLinkedList(new int[]{2, 6})
+        };
+
+        ListNode head = mergeKLists(lists);
+        while (head != null) {
+            System.out.print(head.val + "->");
+            head = head.next;
+        }
+        System.out.println("null");
+    }
+
     // TC: O(nlog(k))
     // SC: O(k)
-    public ListNode mergeKLists(ListNode[] lists) {
+    public static ListNode mergeKLists(ListNode[] lists) {
         // Min Heap
         PriorityQueue<ListNode> pq = new PriorityQueue<>((a, b) -> (a.val - b.val));
 
@@ -29,6 +44,16 @@ public class MergeKSortedLists {
             }
         }
 
+        return dummy.next;
+    }
+
+    private static ListNode generateLinkedList(int[] arr) {
+        ListNode dummy = new ListNode(0);
+        ListNode temp = dummy;
+        for (int it : arr) {
+            temp.next = new ListNode(it);
+            temp = temp.next;
+        }
         return dummy.next;
     }
 }
