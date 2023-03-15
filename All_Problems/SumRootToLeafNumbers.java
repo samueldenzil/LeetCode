@@ -4,29 +4,36 @@ package All_Problems;
 public class SumRootToLeafNumbers {
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
+        String[] arr = {"4", "9", "0", "5", "1"};
+        TreeNode root = generateTree(arr, 0);
         System.out.println(sumNumbers(root));
     }
 
     public static int sumNumbers(TreeNode root) {
         int[] ans = new int[1];
-        helper(root, ans, 0);
+        helper(root, 0, ans);
         return ans[0];
     }
 
-    private static void helper(TreeNode root, int[] ans, int curr) {
+    private static void helper(TreeNode root, int currSum, int[] ans) {
         if (root == null) {
             return;
         }
-        // leaf node
-        if (root.left == null && root.right == null) {
-            ans[0] += (curr * 10) + root.val;
+        if (root.left == null && root.right == null) {  // leaf node
+            ans[0] += currSum * 10 + root.val;
             return;
         }
+        helper(root.left, currSum * 10 + root.val, ans);
+        helper(root.right, currSum * 10 + root.val, ans);
+    }
 
-        helper(root.left, ans, curr * 10 + root.val);
-        helper(root.right, ans, curr * 10 + root.val);
+    private static TreeNode generateTree(String[] arr, int i) {
+        TreeNode root = null;
+        if (i < arr.length && arr[i] != null) {
+            root = new TreeNode(Integer.parseInt(arr[i]));
+            root.left = generateTree(arr, i * 2 + 1);
+            root.right = generateTree(arr, i * 2 + 2);
+        }
+        return root;
     }
 }
