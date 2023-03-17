@@ -20,9 +20,7 @@ public class ConstructBinaryTreeFromInorderAndPostorderTraversal {
             map.put(inorder[i], i);
         }
 
-        TreeNode root = helper(inorder, 0, inorder.length - 1, postorder, 0, postorder.length - 1, map);
-
-        return root;
+        return helper(inorder, 0, inorder.length - 1, postorder, 0, postorder.length - 1, map);
     }
 
     private static TreeNode helper(int[] inorder, int inStart, int inEnd, int[] postorder, int postStart, int postEnd, Map<Integer, Integer> map) {
