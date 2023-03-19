@@ -1,8 +1,6 @@
 // https://leetcode.com/problems/design-browser-history/
 package LinkedList;
 
-import Design.BrowserHistory_Stack;
-
 class BrowserHistory {
 
     static class Node {
@@ -17,37 +15,34 @@ class BrowserHistory {
         }
     }
 
-    Node ptr;
+    private Node ptr;
 
     public BrowserHistory(String homepage) {
         ptr = new Node(homepage);
     }
 
     public void visit(String url) {
-        Node temp = new Node(url);
-        temp.prev = ptr;
-        ptr.next = temp;
+        ptr.next = new Node(url);
+        ptr.next.prev = ptr;
         ptr = ptr.next;
     }
 
     public String back(int steps) {
-        while (steps > 0 && ptr.prev != null) {
+        while (ptr.prev != null && steps-- > 0) {
             ptr = ptr.prev;
-            steps--;
         }
         return ptr.url;
     }
 
     public String forward(int steps) {
-        while (steps > 0 && ptr.next != null) {
+        while (ptr.next != null && steps-- > 0) {
             ptr = ptr.next;
-            steps--;
         }
         return ptr.url;
     }
 
     public static void main(String[] args) {
-        BrowserHistory_Stack browserHistory = new BrowserHistory_Stack("leetcode.com");
+        BrowserHistory browserHistory = new BrowserHistory("leetcode.com");
         // You are in "leetcode.com". Visit "google.com"
         browserHistory.visit("google.com");
         // You are in "google.com". Visit "facebook.com"

@@ -1,43 +1,37 @@
 // https://leetcode.com/problems/design-browser-history/
 package All_Problems;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 
 public class BrowserHistory_Stack {
-
-    List<String> stack;
-    int pointerIndex = 0;
+    private Stack<String> stack1;
+    private Stack<String> stack2;
 
     public BrowserHistory_Stack(String homepage) {
-        stack = new ArrayList<>();
-        stack.add(pointerIndex, homepage);
+        this.stack1 = new Stack<>();
+        this.stack2 = new Stack<>();
+        this.stack1.add(homepage);
     }
 
     public void visit(String url) {
-        pointerIndex += 1;
-        stack.add(pointerIndex, url);
-        int temp = pointerIndex;
-        while (temp < stack.size() - 1) {
-            stack.remove(temp + 1);
+        stack1.add(url);
+        while (!stack2.isEmpty()) {
+            stack2.pop();
         }
-        pointerIndex = stack.size() - 1;
     }
 
     public String back(int steps) {
-        pointerIndex -= steps;
-        if (pointerIndex < 0) {
-            pointerIndex = 0;
+        while (stack1.size() > 1 && steps-- > 0) {
+            stack2.add(stack1.pop());
         }
-        return stack.get(pointerIndex);
+        return stack1.peek();
     }
 
     public String forward(int steps) {
-        pointerIndex += steps;
-        if (pointerIndex >= stack.size()) {
-            pointerIndex = stack.size() - 1;
+        while (!stack2.isEmpty() && steps-- > 0) {
+            stack1.add(stack2.pop());
         }
-        return stack.get(pointerIndex);
+        return stack1.peek();
     }
 
     public static void main(String[] args) {
