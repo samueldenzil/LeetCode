@@ -1,16 +1,17 @@
+// https://leetcode.com/problems/binary-search/
 package All_Problems;
+
 public class BinarySearch {
 
     public static void main(String[] args) {
-        int[] arr = {2, 3, 4, 15, 16, 18, 22, 45, 89};
-        int target = 2;
-        int ans = binarySearch(arr, target);
-        System.out.println(ans);
+        int[] arr = {-1, 0, 3, 5, 9, 12};
+        int target = 9;
+        System.out.println(binarySearch(arr, target));
     }
 
     // return the index
     // return -1 if target does not exist
-    static int binarySearch(int[] arr, int target) {
+    public static int binarySearch(int[] arr, int target) {
         int start = 0;
         int end = arr.length - 1;
 
