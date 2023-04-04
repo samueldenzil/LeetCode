@@ -6,8 +6,8 @@ import java.util.Arrays;
 public class BoatsToSavePeople {
 
     public static void main(String[] args) {
-        int[] people = {3, 2, 2, 1};
-        int limit = 3;
+        int[] people = {5, 1, 4, 2};
+        int limit = 6;
         System.out.println(numRescueBoats(people, limit));
     }
 
