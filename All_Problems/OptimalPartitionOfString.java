@@ -12,19 +12,17 @@ public class OptimalPartitionOfString {
     }
 
     public static int partitionString(String s) {
+        Set<Character> set = new HashSet<>();
         int count = 1;
-        for (int i = 0; i < s.length(); i++) {
-            Set<Character> set = new HashSet<>();
-            for (int j = i; j < s.length(); j++) {
-                char c = s.charAt(j);
-                if (set.contains(c)) {
-                    i = j - 1;
-                    count++;
-                    break;
-                }
-                set.add(c);
+
+        for (char c : s.toCharArray()) {
+            if (set.contains(c)) {
+                count++;
+                set.clear();
             }
+            set.add(c);
         }
+
         return count;
     }
 }
