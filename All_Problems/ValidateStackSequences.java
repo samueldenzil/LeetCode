@@ -13,17 +13,17 @@ public class ValidateStackSequences {
 
     public static boolean validateStackSequences(int[] pushed, int[] popped) {
         Stack<Integer> stack = new Stack<>();
-        int j = 0;
+        int i = 0;
 
-        for (int i : pushed) {
-            stack.push(i);
+        for (int it : pushed) {
+            stack.add(it);
             // the thing to solve this problem was when to pop the elements from the stack
-            while (!stack.isEmpty() && popped[j] == stack.peek()) {
+            while (!stack.isEmpty() && stack.peek() == popped[i]) {
                 stack.pop();
-                j++;
+                i++;
             }
         }
 
-        return j == popped.length;
+        return i == popped.length;
     }
 }
