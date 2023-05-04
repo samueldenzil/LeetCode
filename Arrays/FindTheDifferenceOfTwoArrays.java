@@ -1,9 +1,10 @@
 // https://leetcode.com/problems/find-the-difference-of-two-arrays/
 package Arrays;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 
 public class FindTheDifferenceOfTwoArrays {
 
@@ -13,49 +14,22 @@ public class FindTheDifferenceOfTwoArrays {
     }
 
     public static List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-
-        List<Integer> list1 = new ArrayList<>();
-        List<Integer> list2 = new ArrayList<>();
-
-        for (int i : nums1) {
-            if (!binarySearch(nums2, i) && !list1.contains(i)) {
-                list1.add(i);
-            }
-        }
-
-        for (int i : nums2) {
-            if (!binarySearch(nums1, i) && !list2.contains(i)) {
-                list2.add(i);
-            }
-        }
-
         List<List<Integer>> ans = new ArrayList<>();
-        ans.add(list1);
-        ans.add(list2);
-
+        ans.add(getElementsOnlyInFirstList(nums1, nums2));
+        ans.add(getElementsOnlyInFirstList(nums2, nums1));
         return ans;
     }
 
-    public static boolean binarySearch(int[] arr, int target) {
-        int start = 0;
-        int end = arr.length - 1;
-
-        while (start <= end) {
-            int mid = start + (end - start) / 2;
-
-            if (arr[mid] == target) {
-                return true;
-            }
-
-            if (arr[mid] > target) {
-                end = mid - 1;
-            } else if (arr[mid] < target) {
-                start = mid + 1;
-            }
+    private static List<Integer> getElementsOnlyInFirstList(int[] nums1, int[] nums2) {
+        Set<Integer> set = new HashSet<>();
+        for (int it : nums1) {
+            set.add(it);
         }
 
-        return false;
+        for (int it : nums2) {
+            set.remove(it);
+        }
+
+        return new ArrayList<>(set);
     }
 }
