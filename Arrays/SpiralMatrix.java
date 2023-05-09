@@ -23,7 +23,7 @@ public class SpiralMatrix {
         // 2 = right -> left
         // 3 = down -> top
 
-        List<Integer> ans = new ArrayList<Integer>();
+        List<Integer> ans = new ArrayList<>();
 
         int top = 0, down = matrix.length - 1;
         int left = 0, right = matrix[0].length - 1;
@@ -38,7 +38,7 @@ public class SpiralMatrix {
                     ans.add(matrix[top][i]);
                 }
                 // after going from left to right i want to go to the next row
-                top = top + 1;
+                top++;
             } else if (directionPointer == 1) {
                 // from top to bottom
                 // here the column is fixed but the rows are changing
@@ -46,7 +46,7 @@ public class SpiralMatrix {
                     ans.add(matrix[i][right]);
                 }
                 // after going from top to bottom i want to go to the previous column
-                right = right - 1;
+                right--;
             } else if (directionPointer == 2) {
                 // from right to left
                 // here the row is fixed but the columns are changing
@@ -54,7 +54,7 @@ public class SpiralMatrix {
                     ans.add(matrix[down][i]);
                 }
                 // after going from right to left i want to go to the above row
-                down = down - 1;
+                down--;
             } else if (directionPointer == 3) {
                 // from down to top
                 // here the column if fixed but the rows are changing
@@ -62,9 +62,10 @@ public class SpiralMatrix {
                     ans.add(matrix[i][left]);
                 }
                 // after going from down to top i want to go to the next column
-                left = left + 1;
+                left++;
             }
-            directionPointer = (directionPointer + 1) % 4;
+            directionPointer += 1;
+            directionPointer %= 4;
         }
 
         return ans;
