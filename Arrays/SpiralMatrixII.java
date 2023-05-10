@@ -60,7 +60,7 @@ public class SpiralMatrixII {
                 // After going from down to top I want to go one step right
                 left += 1;
             }
-            // direction = (direction + 1) % 4;
+
             direction += 1;
             direction %= 4;
         }
