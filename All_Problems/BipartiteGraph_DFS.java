@@ -1,50 +1,28 @@
-// https://practice.geeksforgeeks.org/problems/bipartite-graph/1
+// https://leetcode.com/problems/is-graph-bipartite/
 package All_Problems;
 
 import java.util.Arrays;
-import java.util.ArrayList;
 
 public class BipartiteGraph_DFS {
 
     public static void main(String[] args) {
-        int V = 7;
-
-        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
-        for (int i = 0; i < V; i++) {
-            adj.add(new ArrayList<>());
-        }
-
-        adj.get(0).add(1);
-        adj.get(1).add(0);
-
-        adj.get(1).add(2);
-        adj.get(2).add(1);
-
-        adj.get(2).add(3);
-        adj.get(3).add(2);
-
-        adj.get(4).add(3);
-        adj.get(3).add(4);
-
-        adj.get(4).add(5);
-        adj.get(5).add(4);
-
-        adj.get(4).add(6);
-        adj.get(6).add(4);
-
-        adj.get(1).add(6);
-        adj.get(6).add(1);
-
-        System.out.println(isBipartite(V, adj));
+        int[][] graph = {
+                {1, 2, 3},
+                {0, 2},
+                {0, 1, 3},
+                {0, 2}
+        };
+        System.out.println(isBipartite(graph));
     }
 
-    public static boolean isBipartite(int V, ArrayList<ArrayList<Integer>> adj) {
-        int[] color = new int[V];
+    public static boolean isBipartite(int[][] graph) {
+        int n = graph.length;
+        int[] color = new int[n];
         Arrays.fill(color, -1);
 
-        for (int i = 0; i < V; i++) {
+        for (int i = 0; i < n; i++) {
             if (color[i] == -1) {
-                if (!dfs(i, 0, adj, color)) {
+                if (!dfs(i, 0, graph, color)) {
                     return false;
                 }
             }
@@ -53,12 +31,12 @@ public class BipartiteGraph_DFS {
         return true;
     }
 
-    private static boolean dfs(int node, int col, ArrayList<ArrayList<Integer>> adj, int[] color) {
+    private static boolean dfs(int node, int col, int[][] graph, int[] color) {
         color[node] = col;
 
-        for (int it : adj.get(node)) {
+        for (int it : graph[node]) {
             if (color[it] == -1) {
-                if (!dfs(it, 1 - col, adj, color)) {
+                if (!dfs(it, 1 - col, graph, color)) {
                     return false;
                 }
             } else if (color[it] == col) {

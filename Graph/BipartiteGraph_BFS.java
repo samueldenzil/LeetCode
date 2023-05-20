@@ -1,85 +1,63 @@
-// https://practice.geeksforgeeks.org/problems/bipartite-graph/1/#
+// https://leetcode.com/problems/is-graph-bipartite/
 package Graph;
 
 import java.util.Arrays;
-import java.util.ArrayList;
 import java.util.Queue;
 import java.util.LinkedList;
 
 public class BipartiteGraph_BFS {
 
-	public static void main(String[] args) {
-		int V = 7;
+    public static void main(String[] args) {
+        int[][] graph = {
+                {1, 2, 3},
+                {0, 2},
+                {0, 1, 3},
+                {0, 2}
+        };
+        System.out.println(isBipartite(graph));
+    }
 
-		ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
-		for (int i = 0; i < V; i++) {
-			adj.add(new ArrayList<>());
-		}
+    public static boolean isBipartite(int[][] graph) {
+        int n = graph.length;
+        int notColored = -1;
 
-		adj.get(0).add(1);
-		adj.get(1).add(0);
+        int[] color = new int[n];
+        Arrays.fill(color, notColored);
 
-		adj.get(1).add(2);
-		adj.get(2).add(1);
+        for (int i = 0; i < n; i++) {
+            if (color[i] == notColored) {
+                if (!bfs(i, graph, color)) {
+                    return false;
+                }
+            }
+        }
 
-		adj.get(2).add(3);
-		adj.get(3).add(2);
+        return true;
+    }
 
-		adj.get(4).add(3);
-		adj.get(3).add(4);
+    private static boolean bfs(int i, int[][] graph, int[] color) {
+        int notColored = -1;
+        int c1 = 0;
+        int c2 = 1;
+        Queue<Integer> queue = new LinkedList<>();
 
-		adj.get(4).add(5);
-		adj.get(5).add(4);
+        queue.add(i);
+        color[i] = c1;
 
-		adj.get(4).add(6);
-		adj.get(6).add(4);
+        while (!queue.isEmpty()) {
+            int node = queue.poll();
 
-		adj.get(1).add(6);
-		adj.get(6).add(1);
+            for (int it : graph[node]) {
+                if (color[it] == notColored) {
+                    int oppositeColor = color[node] == c1 ? c2 : c1;
+                    color[it] = oppositeColor;
+                    queue.add(it);
+                } else if (color[it] == color[node]) {
+                    return false;
+                }
+            }
+        }
 
-		System.out.println(isBipartite(V, adj));
-	}
-
-	public static boolean isBipartite(int V, ArrayList<ArrayList<Integer>> adj) {
-		// Code here
-		int notColored = -1;
-		int[] color = new int[V];
-		Arrays.fill(color, notColored);
-
-		for (int i = 0; i < V; i++) {
-			if (color[i] == notColored) {
-				if (!checkBFS(i, adj, color)) {
-					return false;
-				}
-			}
-		}
-
-		return true;
-	}
-
-	private static boolean checkBFS(int i, ArrayList<ArrayList<Integer>> adj, int[] color) {
-		int notColored = -1;
-		int c1 = 0;
-		int c2 = 1;
-		Queue<Integer> queue = new LinkedList<>();
-
-		queue.add(i);
-		color[i] = c1;
-
-		while (!queue.isEmpty()) {
-			int node = queue.poll();
-
-			for (int it : adj.get(node)) {
-				if (color[it] == notColored) {
-					int oppositeColor = color[node] == c1 ? c2 : c1;
-					color[it] = oppositeColor;
-					queue.add(it);
-				} else if (color[it] == color[node]) {
-					return false;
-				}
-			}
-		}
-
-		return true;
-	}
+        return true;
+    }
 }
