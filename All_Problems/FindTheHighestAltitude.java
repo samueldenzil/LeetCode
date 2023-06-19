@@ -1,23 +1,22 @@
+// https://leetcode.com/problems/find-the-highest-altitude/
 package All_Problems;
+
 class FindTheHighestAltitude {
-    public int largestAltitude(int[] gain) {
 
-        int initialAltitude = 0;
-        int finalAltitude = 0;
-        int[] temp = new int[gain.length + 1];
+    public static void main(String[] args) {
+        int[] gain = {-5, 1, 5, 0, -7};
+        System.out.println(largestAltitude(gain));
+    }
 
-        for (int i = 0; i < gain.length; i++) {
-            finalAltitude = gain[i] + initialAltitude;
-            temp[i + 1] = finalAltitude;
-            initialAltitude = finalAltitude;
+    public static int largestAltitude(int[] gain) {
+        int maxAltitude = 0;
+        int currAltitude = 0;
+
+        for (int it : gain) {
+            currAltitude += it;
+            maxAltitude = Math.max(maxAltitude, currAltitude);
         }
 
-        int max = temp[0];
-        for (int i = 1; i < temp.length; i++) {
-            if (max < temp[i]) {
-                max = temp[i];
-            }
-        }
-        return max;
+        return maxAltitude;
     }
 }
